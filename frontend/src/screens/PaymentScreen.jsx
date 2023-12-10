@@ -7,25 +7,25 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import { savePaymentMethod } from "../slices/cartSlice";
 
 const PaymentScreen = () => {
-	const [paymentMethod, setPaymentMethod] = useState("PayPal");
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const cart = useSelector((state) => state.cart);
 	const { shippingAddress } = cart;
-
 	useEffect(() => {
-		if (!shippingAddress) {
-			navigate("/shipping");
+		if (!shippingAddress.address) {
+		  navigate('/shipping');
 		}
-	}, [shippingAddress, navigate]);
-
-	const submitHandler = (e) => {
+	  }, [navigate, shippingAddress]);
+	
+	  const [paymentMethod, setPaymentMethod] = useState('PayPal');
+	
+	
+	  const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(savePaymentMethod(paymentMethod));
-		navigate("/placeholder");
-	};
+		navigate('/placeorder');
+	  };
 
 	return (
 		<FormContainer>
