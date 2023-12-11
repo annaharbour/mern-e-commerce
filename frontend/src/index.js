@@ -22,6 +22,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import AdminRoute from "./components/AdminRoute";
 import OrderListScreen from "./screens/admin/OrderListScreen";
 import ProductListScreen from "./screens/admin/ProductListScreen";
+import ProductEditScreen from "./screens/admin/ProductEditScreen";
 
 const router = (
 	<Router>
@@ -42,6 +43,7 @@ const router = (
 				<Route path="" element={<AdminRoute />}>
 					<Route path="/admin/orderList" element={<OrderListScreen />} />
 					<Route path="/admin/productList" element={<ProductListScreen />} />
+					<Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
 
 				</Route>
 			</Route>
