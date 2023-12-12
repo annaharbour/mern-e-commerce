@@ -31,6 +31,8 @@ const router = (
 		<Routes>
 			<Route path="/" element={<App />}>
 				<Route index={true} path="/" element={<HomeScreen />} />
+				<Route index={true} path="/page/:pageNumber" element={<HomeScreen />} />
+
 				<Route path="/product/:id" element={<ProductScreen />} />
 				<Route path="/cart" element={<CartScreen />} />
 				<Route path="/login" element={<LoginScreen />} />
@@ -45,6 +47,8 @@ const router = (
 				<Route path="" element={<AdminRoute />}>
 					<Route path="/admin/orderList" element={<OrderListScreen />} />
 					<Route path="/admin/productList" element={<ProductListScreen />} />
+					<Route path="/admin/productList/:pageNumber" element={<ProductListScreen />} />
+
 					<Route
 						path="/admin/product/:id/edit"
 						element={<ProductEditScreen />}
