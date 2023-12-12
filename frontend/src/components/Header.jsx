@@ -5,6 +5,7 @@ import { Navbar, Nav, Container, Badge, NavDropdown } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import { useLogoutMutation } from "../slices/usersApiSlice";
+import { resetCart } from "../slices/cartSlice";
 import { logout } from "../slices/authSlice";
 import SearchBox from "./SearchBox";
 
@@ -19,6 +20,7 @@ const Header = () => {
 		try {
 			await logoutApiCall().unwrap();
 			dispatch(logout());
+			dispatch(resetCart());
 			navigate("/login");
 		} catch (error) {
 			console.log(error);
@@ -35,7 +37,7 @@ const Header = () => {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ms-auto">
-							<SearchBox/>
+							<SearchBox />
 							<LinkContainer to="/cart">
 								<Nav.Link>
 									<FaShoppingCart />
@@ -64,14 +66,14 @@ const Header = () => {
 								</LinkContainer>
 							)}
 							{userInfo && userInfo.isAdmin && (
-								<NavDropdown title='Admin' id='adminmenu'>
-									<LinkContainer to='/admin/orderList'>
+								<NavDropdown title="Admin" id="adminmenu">
+									<LinkContainer to="/admin/orderList">
 										<NavDropdown.Item>Orders</NavDropdown.Item>
 									</LinkContainer>
-									<LinkContainer to='/admin/productList'>
+									<LinkContainer to="/admin/productList">
 										<NavDropdown.Item>Products</NavDropdown.Item>
 									</LinkContainer>
-									<LinkContainer to='/admin/userList'>
+									<LinkContainer to="/admin/userList">
 										<NavDropdown.Item>Users</NavDropdown.Item>
 									</LinkContainer>
 								</NavDropdown>

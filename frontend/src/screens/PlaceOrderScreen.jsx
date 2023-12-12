@@ -19,9 +19,6 @@ const PlaceOrderScreen = () => {
 	  if (!cart.shippingAddress.address) {
 		navigate('/shipping');
 	  } 
-	//   else if (!cart.paymentMethod) {
-	// 	navigate('/payment');
-	//   }
 	}, [cart.paymentMethod, cart.shippingAddress.address, navigate]);
   
 	const dispatch = useDispatch();
