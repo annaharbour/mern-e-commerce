@@ -1,14 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {
-	Row,
-	Col,
-	ListGroup,
-	Image,
-	Button,
-	Card,
-} from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Button, Card } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { Message } from "../components/Message";
@@ -76,13 +69,6 @@ const OrderScreen = () => {
 			}
 		});
 	}
-
-	// async function onApproveTest() {
-	// 	await payOrder({ orderId, details: { payer: {} } });
-	// 	refetch();
-
-	// 	toast.success("Order is paid");
-	// }
 
 	function onError(err) {
 		toast.error(err.message);
