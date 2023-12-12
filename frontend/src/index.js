@@ -24,6 +24,7 @@ import OrderListScreen from "./screens/admin/OrderListScreen";
 import ProductListScreen from "./screens/admin/ProductListScreen";
 import ProductEditScreen from "./screens/admin/ProductEditScreen";
 import UserListScreen from "./screens/admin/UserListScreen";
+import UserEditScreen from "./screens/admin/UserEditScreen";
 
 const router = (
 	<Router>
@@ -49,6 +50,7 @@ const router = (
 						element={<ProductEditScreen />}
 					/>
 					<Route path="/admin/userList" element={<UserListScreen />} />
+					<Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
 				</Route>
 			</Route>
 		</Routes>
