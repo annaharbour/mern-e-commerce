@@ -24,9 +24,10 @@ const ProductListScreen = () => {
 		if (window.confirm("Are you sure you want to create a new product?")) {
 			try {
 				await createProduct();
+				toast.success("Product deleted");
 				refetch();
 			} catch (err) {
-				toast(err.message);
+				toast.error(err.message);
 			}
 		}
 	};
