@@ -4,10 +4,11 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { Message } from "../../components/Message";
 import { Loader } from "../../components/Loader";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 import {
 	useGetProductsQuery,
 	useCreateProductMutation,
+	useDeleteProductMutation,
 } from "../../slices/productsApiSlice";
 
 const ProductListScreen = () => {
@@ -16,18 +17,30 @@ const ProductListScreen = () => {
 	const [createProduct, { isLoading: loadingCreate }] =
 		useCreateProductMutation();
 
-	const createProductHandler = async () => {
-        if(window.confirm('Are you sure you want to create a new product?')){
-            try{
-                await createProduct()
-                refetch()
-            } catch(err){
-                toast(err.message)
-            }
-        }
-    };
+	const [deleteProduct, { isLoading: loadingDelete }] =
+		useDeleteProductMutation();
 
-	const deleteHandler = () => {};
+	const createProductHandler = async () => {
+		if (window.confirm("Are you sure you want to create a new product?")) {
+			try {
+				await createProduct();
+				refetch();
+			} catch (err) {
+				toast(err.message);
+			}
+		}
+	};
+
+	const deleteHandler = async (id) => {
+		if (window.confirm("Are you sure you want to delete this product?")) {
+			try {
+				await deleteProduct(id);
+				refetch();
+			} catch (err) {
+				toast.error(err?.data.message || err.error);
+			}
+		}
+	};
 	return (
 		<>
 			<Row className="align-items-center">
@@ -40,7 +53,8 @@ const ProductListScreen = () => {
 					</Button>
 				</Col>
 			</Row>
-            {loadingCreate && <Loader/>}
+			{loadingCreate && <Loader />}
+			{loadingDelete && <Loader />}
 			{isLoading ? (
 				<Loader />
 			) : error ? (
