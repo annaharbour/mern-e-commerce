@@ -211,14 +211,6 @@ const OrderScreen = () => {
 										<Loader />
 									) : (
 										<div>
-											{/* THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION! */}
-											{/* <Button
-                        style={{ marginBottom: '10px' }}
-                        onClick={onApproveTest}
-                      >
-                        Test Pay Order
-                      </Button> */}
-
 											<div>
 												<PayPalButtons
 													createOrder={createOrder}
